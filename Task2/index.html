@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Dynamic Form Builder</h2>
+        <form id="dynamicForm">
+            <div id="formFields">
+                <div class="field">
+                    <input type="text" name="field[]" placeholder="Enter value">
+                    <button type="button" class="remove-btn">Remove</button>
+                </div>
+            </div>
+            <button type="button" id="addFieldBtn">Add Field</button>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h3>Form Data:</h3>
+        <pre id="formData"></pre>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
