@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav><a href="#about">About</a> | <a href="#projects">Projects</a> | <a href="#contact">Contact</a></nav>
+<section id="about" style="height:300px;background:#eee">About Me</section>
+<section id="projects" style="height:300px;background:#ccc">Projects</section>
+<section id="contact" style="height:300px;background:#aaa">Contact</section>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('nav a').forEach(a=>{
+  a.onclick=e=>{ e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'}); }
+});
+</script>
+</body>
+</html>

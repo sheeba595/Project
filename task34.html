@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="seats"></div>
+
+<script>
+const booked = JSON.parse(localStorage.getItem('bookedSeats')) || [];
+const seatDiv = document.getElementById('seats');
+
+for(let i=1;i<=20;i++){
+  const btn = document.createElement('button');
+  btn.textContent=i;
+  btn.style.margin='3px';
+  if(booked.includes(i)) btn.style.background='red';
+  btn.onclick=()=>{
+    if(booked.includes(i)){ booked.splice(booked.indexOf(i),1); btn.style.background=''; }
+    else{ booked.push(i); btn.style.background='red'; }
+    localStorage.setItem('bookedSeats', JSON.stringify(booked));
+  };
+  seatDiv.appendChild(btn);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="Product 1" id="p1">
+<input placeholder="Product 2" id="p2">
+<button id="compare">Compare</button>
+<div id="result"></div>
+
+<script>
+const data = {Phone:{price:300,brand:"X"},Laptop:{price:1000,brand:"Y"}};
+document.getElementById('compare').onclick=()=>{
+  const v1=document.getElementById('p1').value;
+  const v2=document.getElementById('p2').value;
+  const r1=data[v1], r2=data[v2];
+  if(r1 && r2) document.getElementById('result').textContent=`${v1}: $${r1.price}, ${r1.brand} | ${v2}: $${r2.price}, ${r2.brand}`;
+  else document.getElementById('result').textContent='Invalid product(s)';
+};
+</script>
+</body>
+</html>

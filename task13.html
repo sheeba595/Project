@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="marks" placeholder="Enter marks">
+<button id="calc">Calculate</button>
+<div id="result"></div>
+
+<script>
+document.getElementById('calc').onclick = () => {
+  const marks = Number(document.getElementById('marks').value);
+  let grade, status;
+  if(marks>=90) grade='A';
+  else if(marks>=75) grade='B';
+  else if(marks>=50) grade='C';
+  else grade='F';
+  status = marks>=50 ? 'Pass':'Fail';
+  document.getElementById('result').textContent = `Grade: ${grade} | ${status}`;
+};
+</script>
+</body>
+</html>

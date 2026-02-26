@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><a href="#tab1" class="tab">Tab 1</a> | <a href="#tab2" class="tab">Tab 2</a></div>
+<div id="content"></div>
+
+<script>
+function showTab(){
+  const hash = location.hash || '#tab1';
+  document.getElementById('content').textContent='Content for '+hash.replace('#','');
+}
+window.onhashchange=showTab;
+showTab();
+</script>
+</body>
+</html>

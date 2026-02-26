@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="tooltip" data-tip="I am a tooltip">Hover me</button>
+<div id="tip" style="position:absolute;padding:5px;background:black;color:white;display:none;border-radius:3px;"></div>
+
+<script>
+const tip = document.getElementById('tip');
+document.querySelectorAll('.tooltip').forEach(el=>{
+  el.onmouseenter = e => { tip.textContent=el.dataset.tip; tip.style.display='block'; tip.style.top=e.pageY+10+'px'; tip.style.left=e.pageX+10+'px'; };
+  el.onmousemove = e => { tip.style.top=e.pageY+10+'px'; tip.style.left=e.pageX+10+'px'; };
+  el.onmouseleave = ()=> tip.style.display='none';
+});
+</script>
+</body>
+</html>

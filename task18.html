@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="urlInput" placeholder="Enter URL">
+<button id="addBookmark">Add</button>
+<ul id="bookmarks"></ul>
+
+<script>
+let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+function render() {
+  const ul = document.getElementById('bookmarks');
+  ul.innerHTML='';
+  bookmarks.forEach((b,i)=>{
+    const li = document.createElement('li');
+    li.innerHTML=`<a href="${b}" target="_blank">${b}</a> <button onclick="del(${i})">X</button>`;
+    ul.appendChild(li);
+  });
+}
+
+function del(i){ bookmarks.splice(i,1); localStorage.setItem('bookmarks', JSON.stringify(bookmarks)); render(); }
+
+document.getElementById('addBookmark').onclick = ()=>{
+  const url = document.getElementById('urlInput').value;
+  if(url){ bookmarks.push(url); localStorage.setItem('bookmarks', JSON.stringify(bookmarks)); render(); }
+};
+
+render();
+</script>
+</body>
+</html>

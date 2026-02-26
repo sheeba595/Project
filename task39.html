@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<input id="search" placeholder="Search">
+<label><input type="checkbox" value="Electronics" class="cat">Electronics</label>
+<label><input type="checkbox" value="Clothes" class="cat">Clothes</label>
+<ul id="list"></ul>
+
+<script>
+const products=[
+  {name:'Phone',category:'Electronics'},
+  {name:'Laptop',category:'Electronics'},
+  {name:'Shirt',category:'Clothes'}
+];
+
+function render(){
+  const search = document.getElementById('search').value.toLowerCase();
+  const checked = Array.from(document.querySelectorAll('.cat:checked')).map(c=>c.value);
+  const ul = document.getElementById('list'); ul.innerHTML='';
+  products.filter(p=>p.name.toLowerCase().includes(search) && (checked.length===0 || checked.includes(p.category)))
+          .forEach(p=>{ const li=document.createElement('li'); li.textContent=p.name+' ('+p.category+')'; ul.appendChild(li); });
+}
+
+document.getElementById('search').oninput=render;
+document.querySelectorAll('.cat').forEach(c=>c.onchange=render);
+render();
+</script>
+</body>
+</html>

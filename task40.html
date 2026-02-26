@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="steps" style="display:flex;gap:10px;"></div>
+<div id="formContent"></div>
+<button id="prev">Prev</button>
+<button id="next">Next</button>
+
+<script>
+const steps=["Step 1","Step 2","Step 3"];
+let current=0;
+
+function renderSteps(){
+  const div=document.getElementById('steps'); div.innerHTML='';
+  steps.forEach((s,i)=>{ const span=document.createElement('span'); span.textContent=s; span.style.color=i===current?'green':'gray'; div.appendChild(span); });
+  document.getElementById('formContent').textContent='Content for '+steps[current];
+}
+document.getElementById('prev').onclick=()=>{ if(current>0) current--; renderSteps(); };
+document.getElementById('next').onclick=()=>{ if(current<steps.length-1) current++; renderSteps(); };
+renderSteps();
+</script>
+</body>
+</html>

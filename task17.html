@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="passInput" placeholder="Enter password">
+<button id="savePass">Save</button>
+<ul id="savedPasses"></ul>
+
+<script>
+let passes = JSON.parse(localStorage.getItem('passes')) || [];
+
+function render() {
+  const ul = document.getElementById('savedPasses');
+  ul.innerHTML='';
+  passes.forEach((p,i)=>{
+    const li = document.createElement('li');
+    li.textContent = atob(p); // decrypt
+    li.onclick=()=>{ passes.splice(i,1); localStorage.setItem('passes', JSON.stringify(passes)); render(); };
+    ul.appendChild(li);
+  });
+}
+
+document.getElementById('savePass').onclick = ()=>{
+  const pass = document.getElementById('passInput').value;
+  if(pass){ passes.push(btoa(pass)); localStorage.setItem('passes', JSON.stringify(passes)); render(); }
+};
+
+render();
+</script>
+</body>
+</html>

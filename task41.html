@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="board"></div>
+<input id="task" placeholder="New task"><button id="add">Add</button>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem('tasks'))||[];
+function render(){
+  const board=document.getElementById('board'); board.innerHTML='';
+  tasks.forEach((t,i)=>{
+    const div=document.createElement('div'); div.textContent=t;
+    const del=document.createElement('button'); del.textContent='X'; del.onclick=()=>{ tasks.splice(i,1); save(); render(); };
+    const edit=document.createElement('button'); edit.textContent='Edit'; edit.onclick=()=>{ const val=prompt('Edit',t); if(val){ tasks[i]=val; save(); render(); } };
+    div.appendChild(edit); div.appendChild(del); board.appendChild(div);
+  });
+}
+function save(){ localStorage.setItem('tasks',JSON.stringify(tasks)); }
+document.getElementById('add').onclick=()=>{ const t=document.getElementById('task').value; if(t){ tasks.push(t); save(); render(); document.getElementById('task').value=''; } };
+render();
+</script>
+</body>
+</html>

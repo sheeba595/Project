@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chat" style="position:fixed;bottom:20px;right:20px;width:200px;">
+  <button id="toggle">Chat</button>
+  <div id="chatBox" style="display:none;background:#eee;padding:10px;height:150px;overflow:auto;">
+    <p>Welcome!</p>
+  </div>
+</div>
+
+<script>
+document.getElementById('toggle').onclick = ()=> {
+  const box = document.getElementById('chatBox');
+  box.style.display = box.style.display==='none'?'block':'none';
+};
+</script>
+</body>
+</html>

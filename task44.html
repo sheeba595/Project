@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="cat"><option>All</option><option>Tech</option><option>Life</option></select>
+<div id="blogs"></div>
+
+<script>
+const blogs=[
+  {title:'JS Tips',cat:'Tech'},
+  {title:'My Day',cat:'Life'}
+];
+function render(){
+  const c=document.getElementById('cat').value;
+  const div=document.getElementById('blogs'); div.innerHTML='';
+  blogs.filter(b=>c==='All'||b.cat===c).forEach(b=>{ const d=document.createElement('div'); d.textContent=b.title; div.appendChild(d); });
+}
+document.getElementById('cat').onchange=render;
+render();
+</script>
+</body>
+</html>

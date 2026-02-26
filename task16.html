@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="searchTable" placeholder="Search">
+<table border="1" id="table">
+<thead><tr><th>Name</th><th>Age</th></tr></thead>
+<tbody></tbody>
+</table>
+<button id="prev">Prev</button><button id="next">Next</button>
+
+<script>
+const data=[{name:'Alice',age:25},{name:'Bob',age:30},{name:'Charlie',age:28},{name:'Dave',age:40},{name:'Eve',age:35}];
+let page=0, rows=2;
+
+function render() {
+  const filter = document.getElementById('searchTable').value.toLowerCase();
+  const tbody = document.querySelector('#table tbody');
+  tbody.innerHTML='';
+  const filtered = data.filter(d=>d.name.toLowerCase().includes(filter));
+  filtered.slice(page*rows,(page+1)*rows).forEach(d=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML=`<td>${d.name}</td><td>${d.age}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+document.getElementById('prev').onclick = ()=>{ if(page>0) page--; render(); };
+document.getElementById('next').onclick = ()=>{ if((page+1)*rows<data.length) page++; render(); };
+document.getElementById('searchTable').oninput = ()=>{ page=0; render(); };
+
+render();
+</script>
+</body>
+</html>

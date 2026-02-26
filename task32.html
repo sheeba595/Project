@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button data-vote="A">Vote A</button>
+<button data-vote="B">Vote B</button>
+<div id="results"></div>
+
+<script>
+let votes = JSON.parse(localStorage.getItem('votes')) || {A:0,B:0};
+
+function renderResults(){
+  const total = votes.A + votes.B;
+  document.getElementById('results').innerHTML = `
+    A: ${votes.A} (${total?Math.round(votes.A/total*100):0}%)<br>
+    B: ${votes.B} (${total?Math.round(votes.B/total*100):0}%)
+  `;
+}
+
+document.querySelectorAll('button[data-vote]').forEach(b=>{
+  b.onclick = ()=>{
+    votes[b.dataset.vote]++;
+    localStorage.setItem('votes', JSON.stringify(votes));
+    renderResults();
+  };
+});
+
+renderResults();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="type"></div>
+
+<script>
+const texts = ["Hello World","Welcome","JavaScript Fun"];
+let i=0, j=0;
+function type(){
+  const el = document.getElementById('type');
+  if(j<texts[i].length){ el.textContent += texts[i][j]; j++; setTimeout(type,100);}
+  else { setTimeout(()=>{ el.textContent=''; j=0; i=(i+1)%texts.length; type(); },1000); }
+}
+type();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="calendar"></div>
+
+<script>
+const calendar = document.getElementById('calendar');
+for(let d=1; d<=30; d++){
+  const day = document.createElement('div');
+  day.textContent=d;
+  day.style.display='inline-block'; day.style.width='30px'; day.style.height='30px';
+  day.style.textAlign='center'; day.style.lineHeight='30px'; day.style.margin='2px'; day.style.border='1px solid #000';
+  day.onclick=()=>day.style.background=day.style.background? '':'yellow';
+  calendar.appendChild(day);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="searchName" placeholder="Search product">
+<select id="filterCat"><option>All</option><option>Electronics</option><option>Clothes</option></select>
+<ul id="productList"></ul>
+
+<script>
+const products = [
+  {name:'Phone', category:'Electronics', price:300},
+  {name:'Shirt', category:'Clothes', price:20},
+  {name:'Laptop', category:'Electronics', price:1000},
+];
+
+function renderProducts() {
+  const ul = document.getElementById('productList');
+  const nameFilter = document.getElementById('searchName').value.toLowerCase();
+  const catFilter = document.getElementById('filterCat').value;
+  ul.innerHTML = '';
+  products.filter(p=>p.name.toLowerCase().includes(nameFilter) && (catFilter=='All'||p.category==catFilter))
+          .forEach(p=>{
+            const li = document.createElement('li');
+            li.textContent = `${p.name} - $${p.price} (${p.category})`;
+            ul.appendChild(li);
+          });
+}
+
+document.getElementById('searchName').oninput = renderProducts;
+document.getElementById('filterCat').onchange = renderProducts;
+
+renderProducts();
+</script>   
+</body>
+</html>

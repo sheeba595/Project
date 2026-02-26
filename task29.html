@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.accordion { cursor:pointer; background:#eee; padding:10px; margin:5px 0; }
+.panel { max-height:0; overflow:hidden; transition: max-height 0.3s ease; background:#f9f9f9; padding:0 10px; }
+</style>
+<body>
+    <div class="accordion">Section 1</div>
+<div class="panel">Content 1</div>
+<div class="accordion">Section 2</div>
+<div class="panel">Content 2</div>
+
+
+
+<script>
+document.querySelectorAll('.accordion').forEach(acc=>{
+  acc.onclick = ()=>{
+    const panel = acc.nextElementSibling;
+    panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight+'px';
+  };
+});
+</script>
+</body>
+</html>

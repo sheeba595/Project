@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="progressBar" style="position:fixed;top:0;left:0;height:5px;background:blue;width:0%"></div>
+<div style="height:2000px;"></div>
+
+<script>
+window.onscroll = ()=>{
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll/height)*100;
+  document.getElementById('progressBar').style.width = scrolled + '%';
+};
+</script>
+</body>
+</html>

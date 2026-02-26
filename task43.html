@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="showToast">Show Toast</button>
+<div id="toasts" style="position:fixed;bottom:10px;right:10px;"></div>
+
+<script>
+function showToast(msg){
+  const div=document.createElement('div'); div.textContent=msg;
+  div.style.background='black'; div.style.color='white'; div.style.margin='5px'; div.style.padding='5px'; div.style.borderRadius='3px';
+  document.getElementById('toasts').appendChild(div);
+  setTimeout(()=>div.remove(),3000);
+}
+document.getElementById('showToast').onclick=()=>showToast('Hello!');
+</script>
+</body>
+</html>

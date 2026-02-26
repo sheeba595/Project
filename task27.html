@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button data-modal="m1">Open Modal 1</button>
+<button data-modal="m2">Open Modal 2</button>
+
+<div id="m1" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5)">
+  <div style="background:white;margin:100px auto;padding:20px;width:200px;">Modal 1 <button class="close">X</button></div>
+</div>
+
+<div id="m2" class="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5)">
+  <div style="background:white;margin:100px auto;padding:20px;width:200px;">Modal 2 <button class="close">X</button></div>
+</div>
+
+<script>
+document.querySelectorAll('button[data-modal]').forEach(b=>{
+  b.onclick=()=> document.getElementById(b.dataset.modal).style.display='block';
+});
+document.querySelectorAll('.close').forEach(c=>{
+  c.onclick=()=> c.closest('.modal').style.display='none';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display:flex">
+  <div id="sidebar" style="width:200px;background:#333;color:white;padding:10px;">Sidebar<br><button id="toggle">Toggle</button></div>
+  <div id="main" style="flex:1;padding:10px;">Content Area</div>
+</div>
+
+<script>
+document.getElementById('toggle').onclick=()=>{ const s=document.getElementById('sidebar'); s.style.width = s.style.width==='200px'?'50px':'200px'; };
+</script>
+</body>
+</html>

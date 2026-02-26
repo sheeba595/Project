@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Do you like JS?</p>
+<button id="yes">Yes</button> <button id="no">No</button>
+<div id="res"></div>
+
+<script>
+let poll=JSON.parse(localStorage.getItem('poll'))||{yes:0,no:0};
+function render(){ document.getElementById('res').textContent=`Yes: ${poll.yes}, No: ${poll.no}`; }
+document.getElementById('yes').onclick=()=>{ poll.yes++; localStorage.setItem('poll',JSON.stringify(poll)); render(); };
+document.getElementById('no').onclick=()=>{ poll.no++; localStorage.setItem('poll',JSON.stringify(poll)); render(); };
+render();
+</script>
+</body>
+</html>

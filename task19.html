@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Cart</h2>
+<ul id="cartItems"></ul>
+<input id="itemInput" placeholder="Add item">
+<button id="addItem">Add</button>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function renderCart() {
+  const ul = document.getElementById('cartItems');
+  ul.innerHTML = '';
+  cart.forEach((item,i)=>{
+    const li = document.createElement('li');
+    li.textContent = item + " ";
+    const btn = document.createElement('button');
+    btn.textContent = "Remove";
+    btn.onclick = ()=>{ cart.splice(i,1); saveCart(); renderCart(); };
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+}
+
+function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); }
+
+document.getElementById('addItem').onclick = ()=>{
+  const item = document.getElementById('itemInput').value;
+  if(item){ cart.push(item); saveCart(); renderCart(); document.getElementById('itemInput').value=''; }
+};
+
+renderCart();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chatBox" style="border:1px solid #000;height:200px;overflow:auto;"></div>
+<input id="msg"><button id="send">Send</button>
+
+<script>
+const chat=document.getElementById('chatBox');
+document.getElementById('send').onclick=()=>{
+  const m=document.getElementById('msg').value;
+  if(m){ chat.innerHTML+='<div>User: '+m+'</div>'; document.getElementById('msg').value=''; chat.scrollTop=chat.scrollHeight; }
+};
+</script>
+</body>
+</html>

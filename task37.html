@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="drop" style="width:300px;height:150px;border:2px dashed #000;">Drop files here</div>
+<ul id="fileList"></ul>
+
+<script>
+const drop = document.getElementById('drop');
+drop.ondragover = e=> e.preventDefault();
+drop.ondrop = e=>{
+  e.preventDefault();
+  const files = e.dataTransfer.files;
+  const ul = document.getElementById('fileList');
+  for(let f of files){
+    const li = document.createElement('li'); li.textContent=f.name; ul.appendChild(li);
+  }
+};
+</script>
+</body>
+</html>

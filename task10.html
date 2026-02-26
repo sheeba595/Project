@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav id="breadcrumb"></nav>
+<button data-page="Home">Home</button>
+<button data-page="Products">Products</button>
+<button data-page="Electronics">Electronics</button>
+
+<script>
+const breadcrumb = document.getElementById('breadcrumb');
+let trail = [];
+
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    trail.push(btn.dataset.page);
+    breadcrumb.textContent = trail.join(' > ');
+  });
+});
+</script>
+</body>
+</html>

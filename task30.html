@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+#content { transition: opacity 0.5s ease; opacity:1; }
+</style>
+<body>
+    <a href="#page1" class="link">Page 1</a> | <a href="#page2" class="link">Page 2</a>
+<div id="content">Welcome!</div>
+
+
+
+<script>
+document.querySelectorAll('.link').forEach(link=>{
+  link.onclick = e=>{
+    e.preventDefault();
+    const content = document.getElementById('content');
+    content.style.opacity=0;
+    setTimeout(()=>{ content.textContent = "You are at "+link.textContent; content.style.opacity=1; },500);
+  };
+});
+</script>
+</body>
+</html>

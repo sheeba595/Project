@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="weather"></div>
+
+<script>
+const data = { location:"City A", temp:25, condition:"Sunny" };
+document.getElementById('weather').innerHTML = `<h3>${data.location}</h3><p>${data.temp}°C - ${data.condition}</p>`;
+</script>
+</body>
+</html>

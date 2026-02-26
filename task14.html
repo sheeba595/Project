@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="contactName" placeholder="Name">
+<input id="contactPhone" placeholder="Phone">
+<button id="addContact">Add</button>
+<input id="searchContact" placeholder="Search">
+<ul id="contacts"></ul>
+
+<script>
+let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+
+function renderContacts(filter='') {
+  const ul = document.getElementById('contacts');
+  ul.innerHTML = '';
+  contacts.filter(c => c.name.includes(filter)).forEach((c,i)=>{
+    const li = document.createElement('li');
+    li.textContent = `${c.name} - ${c.phone}`;
+    li.onclick = () => { contacts.splice(i,1); save(); renderContacts(searchContact.value); };
+    ul.appendChild(li);
+  });
+}
+
+function save() { localStorage.setItem('contacts', JSON.stringify(contacts)); }
+
+document.getElementById('addContact').onclick = () => {
+  const name = document.getElementById('contactName').value;
+  const phone = document.getElementById('contactPhone').value;
+  if(name && phone){ contacts.push({name, phone}); save(); renderContacts(searchContact.value); }
+};
+
+document.getElementById('searchContact').oninput = () => renderContacts(searchContact.value);
+
+renderContacts();
+</script>
+</body>
+</html>
